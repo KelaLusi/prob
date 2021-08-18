@@ -9,17 +9,17 @@ percent_alpha_dict = {}
 text_len = 0
 
 with open(os.path.join(path, file1), 'r') as text:
-    for iline in text:
-        for icher in iline:
-            icher = icher.lower()
-            if icher in alpha_dict:
-                alpha_dict[icher] += 1
-                text_len += 1
-            elif icher == '\n' or icher == ' ':
-                continue
-            else:
-                alpha_dict[icher] = 1
-                text_len += 1
+    for icher in text.read():
+        icher = icher.lower()
+        if icher in alpha_dict:
+            alpha_dict[icher] += 1
+            text_len += 1
+        elif icher == '\n' or icher == ' ':
+            continue
+        else:
+            alpha_dict[icher] = 1
+            text_len += 1
+
 
 with open(os.path.join(path, file2), 'w') as text2:
     for key, value in alpha_dict.items():
